@@ -94,6 +94,7 @@ $$ \mathbf{A}\_{s\times s} =
 $$
 
 Then the formulas for filling the matrix $\mathbf{K}^{(n)}$ can be represented as follows:
+
 $$ \begin{cases}
 			\mathbf{k}\_{1}^{(n)} = \mathbf{f}\left(t_n,\mathbf{x}_n\right),\\
 			\vdots\\
