@@ -73,9 +73,9 @@ Of course, you can implement the algorithm described in the last section as well
 
 $$ \mathbf{x}_{n+1} = \mathbf{x}_n+\tau\mathbf{K}^{(n)}\mathbf{b}, $$
 
-$$ \mathbf{K}^{(n)}_{m\times s}=\left[\mathbf{k}_1^{(n)},\mathbf{k}_2^{(n)},\ldots,\mathbf{k}_s^{(n)}\right]=\mathbf{0}\_{m\times s} $$
+$$ \mathbf{K}^{(n)}\_{m\times s}=\left[\mathbf{k}_1^{(n)},\mathbf{k}_2^{(n)},\ldots,\mathbf{k}_s^{(n)}\right]=\mathbf{0}\_{m\times s} $$
 
-$$ \mathbf{A}_{s\times s} = 
+$$ \mathbf{A}\_{s\times s} = 
 		\begin{bmatrix}
 			\mathbf{a}_1^\mathbf{T}
 			\\
@@ -88,9 +88,9 @@ $$ \mathbf{A}_{s\times s} =
 $$
 
 $$ \begin{cases}
-			\mathbf{k}_{1}^{(n)} = \mathbf{f}\left(t_n,\mathbf{x}_n\right),\\
+			\mathbf{k}\_{1}^{(n)} = \mathbf{f}\left(t_n,\mathbf{x}_n\right),\\
 			\vdots\\
-			\mathbf{k}_{i}^{(n)} = \mathbf{f}\left(t_n + c_i \tau, \mathbf{x}_n + \tau\mathbf{K}^{(n)}\_{m\times i-1}\mathbf{a}_i\right),
+			\mathbf{k}\_{i}^{(n)} = \mathbf{f}\left(t_n + c_i \tau, \mathbf{x}_n + \tau\mathbf{K}^{(n)}\_{m\times i-1}\mathbf{a}_i\right),
 	\end{cases}
 $$
 
