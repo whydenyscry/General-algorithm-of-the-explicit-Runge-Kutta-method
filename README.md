@@ -13,8 +13,7 @@ where $\mathbf{x}=\left[x_1,\dots,x_m\right]^\mathbf{T},\quad
 	
 The $s$-stage Runge-Kutta method can be expressed as follows:
 
-\[\mathbf{x}_{n+1} = \mathbf{x}_n+\tau\sum\limits_{i=1}^{s}b_i\mathbf{k}_{i}^{(n)}\]
+$$ \mathbf{x}_{n+1} = \mathbf{x}_n+\tau\sum\limits_{i=1}^{s}b_i\mathbf{k}_{i}^{(n)} $$
 
-	
 ## References
 1. Butcher, J. C. (2016). Numerical methods for ordinary differential equations. John Wiley & Sons.
