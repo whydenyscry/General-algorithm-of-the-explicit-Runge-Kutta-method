@@ -104,7 +104,44 @@ $$
 
 $$ i=\overline{2,s}.$$
 
+## Example 
+The _ExampleOfUse.mlx_ file shows the obtaining of the Tamari attractor
 
+$$ \begin{cases}
+			\frac{\mathrm{d}x}{\mathrm{d}t} =\left(x-\alpha y\right)\cos z-\beta y \sin z, \\[0.2 cm]
+			\frac{\mathrm{d}y}{\mathrm{d}t} = \left(x+\gamma y\right)\sin z +\delta y\cos z, \\[0.2 cm]
+			\frac{\mathrm{d}z}{\mathrm{d}t} = \varepsilon +\kappa z+\xi\arctan\left(\dfrac{1-\varsigma}{1-\omega}xy\right),
+		\end{cases} 
+$$
+
+$$ \begin{bmatrix}
+			\alpha\\
+			\beta\\
+			\gamma\\
+			\delta\\
+			\varepsilon\\
+			\kappa\\
+			\xi\\
+			\varsigma\\
+			\omega
+		\end{bmatrix}=
+		\begin{bmatrix}
+		1.013\\
+		-0.011\\
+		0.02\\
+		0.96\\
+		0\\
+		0.01\\
+		1\\
+		0.05\\
+		0.05
+		\end{bmatrix},$$
+
+with initial conditions
+
+$\mathbf{x}_0 = [x_0,y_0,z_0]^\mathbf{T} = [1 1 1]^\mathbf{T},$
+
+using the 6th order Runge-Kutta-Butcher method.
 
 ## References
 1. Butcher, J. C. (2016). Numerical methods for ordinary differential equations. John Wiley & Sons.
