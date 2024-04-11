@@ -13,17 +13,14 @@ where $\mathbf{x}=\left[x_1,\dots,x_m\right]^\mathbf{T},\quad
 	
 The $s$-stage Runge-Kutta method can be expressed as follows:
 
-$$ \mathbf{x}_{n+1} = \mathbf{x}_n+\tau\sum\limits_{i=1}^{s}b_i\mathbf{k}_{i}^{(n)}, \quad $$
-
+$$ \mathbf{x}_{n+1} = \mathbf{x}_n + \tau \sum_{i=1}^{s} b_i \mathbf{k}_{i}^{(n)} $$
 where
+$$ \begin{cases}
+\mathbf{k}_{1}^{(n)} = \mathbf{f}(t_n, \mathbf{x}_n), \\
+\vdots \\
+\mathbf{k}_{i}^{(n)} = \mathbf{f}\left(t_n + c_i \tau, \mathbf{x}_n + \tau \sum_{j=1}^{i-1} a_{i,j} \mathbf{k}_{j}^{(n)}\right), \quad i = \overline{2,s}.
+\end{cases} $$
 
-$$
-\begin{cases}
-\mathbf{k}_{1}^{(n)} = \mathbf{f}\left(t_n,\mathbf{x}_n\right),\\
-\vdots\\
-\mathbf{k}_{i}^{(n)} = \mathbf{f}\left(t_n + c_i \tau, \mathbf{x}_n + \tau\displaystyle\sum_{j=1}^{i-1} a_{i,j}\mathbf{k}_{j}^{(n)}\right),\,i=\overline{2,s}.
-\end{cases}
-$$
 	
 ## References
 1. Butcher, J. C. (2016). Numerical methods for ordinary differential equations. John Wiley & Sons.
