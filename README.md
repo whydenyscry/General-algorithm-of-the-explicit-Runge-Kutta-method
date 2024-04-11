@@ -139,7 +139,7 @@ $$ \begin{bmatrix}
 
 with initial conditions
 
-$\mathbf{x}_0 = [x_0,y_0,z_0]^\mathbf{T} = [1, 1, 1]^\mathbf{T},$
+$$\mathbf{x}_0 = [x_0,y_0,z_0]^\mathbf{T} = [1, 1, 1]^\mathbf{T},$$
 
 using the 6th order Runge-Kutta-Butcher method.
 
