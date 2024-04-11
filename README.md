@@ -50,5 +50,23 @@ $$
 
 $$ \mathbf{c},\mathbf{b} \in \mathbb{R}^s,\quad \mathbf{A} \in \mathbb{R}^{s\times s}. $$
 
+In the program implementation other elements of the matrix $\mathbf{A}$ are given by zeros, for example, the Butcher table for the classical method of order 4 is given in the program as follows:
+
+$$ \begin{array}{r|cccc}
+			0          &             &             &           & \\
+			1/2     & 1/2        &             &           & \\
+			1/2     & 0          & 1/2        &           & \\
+			1           & 0          & 0           & 1        & \\
+			\hline
+			& 1/6      & 1/3      & 1/3      & 1/6    \\
+\end{array} \quad \Rightarrow \begin{array}{c|cccc}
+				0   & 0   & 0   & 0   & 0\\
+				1/2 & 1/2 & 0   & 0   & 0\\
+				1/2 & 0   & 1/2 & 0   & 0\\
+				1   & 0   & 0   & 1   & 0\\
+				\hline
+				& 1/6 & 1/3 & 1/3 & 1/6\\
+		\end{array} $$
+
 ## References
 1. Butcher, J. C. (2016). Numerical methods for ordinary differential equations. John Wiley & Sons.
