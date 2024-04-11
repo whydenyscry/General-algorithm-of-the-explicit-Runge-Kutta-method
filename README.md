@@ -29,5 +29,24 @@ $$ i=\overline{2,s}, $$
 
 $\tau$ — time discretization step.
 
+Method coefficients are conveniently set in the form of a **Butcher tableau**:
+
+$$ 
+\begin{array}{r|c}
+			\mathbf{c} & \mathbf{A} \\
+			\hline
+			& \mathbf{b}^{\mathbf{T}}
+		\end{array} \quad \Rightarrow
+		\begin{array}{r|ccccc}
+			0     &         &         &         & \\
+			c_2   & a_{2,1}  &         &         & \\
+			c_3   & a_{3,1}  & a_{3,2}  &         & \\
+			\vdots& \vdots  & \vdots  & \ddots  & \\
+			c_s   & a_{s,1}  & a_{s,2}  & \cdots  & a_{s,s-1} \\
+			\hline
+			& b_1     & b_2     & \cdots  & b_{s-1} & b_s
+		\end{array} 
+$$
+
 ## References
 1. Butcher, J. C. (2016). Numerical methods for ordinary differential equations. John Wiley & Sons.
