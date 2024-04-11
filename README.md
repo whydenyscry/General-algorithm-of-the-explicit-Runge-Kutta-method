@@ -25,6 +25,9 @@ $$
 \end{cases}
 $$
 
-$$ i=\overline{2,s}. $$
+$$ i=\overline{2,s}, $$
+
+$\tau$ — time discretization step.
+
 ## References
 1. Butcher, J. C. (2016). Numerical methods for ordinary differential equations. John Wiley & Sons.
