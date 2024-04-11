@@ -76,9 +76,11 @@ So, the algorithm is based on the application of general matrix algebra:
 $$ \mathbf{x}_{n+1} = \mathbf{x}_n+\tau\mathbf{K}^{(n)}\mathbf{b}.$$
 
 To begin with, at each iteration we need to initialize the matrix $\mathbf{K}^{(n)}$ of the corresponding size as a zero matrix and this matrix is interpreted as follows:
+
 $$ \mathbf{K}^{(n)}\_{m\times s}=\left[\mathbf{k}_1^{(n)},\mathbf{k}_2^{(n)},\ldots,\mathbf{k}_s^{(n)}\right]=\mathbf{0}\_{m\times s}, $$
 
 and the matrix $\mathbf{A}$:
+
 $$ \mathbf{A}\_{s\times s} = 
 		\begin{bmatrix}
 			\mathbf{a}_1^\mathbf{T}
