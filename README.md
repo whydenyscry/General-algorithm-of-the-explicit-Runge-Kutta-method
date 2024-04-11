@@ -83,13 +83,13 @@ and the matrix $\mathbf{A}$:
 
 $$ \mathbf{A}\_{s\times s} = 
 		\begin{bmatrix}
-			\mathbf{a}^{(1)}^\mathbf{T}
+			\cdots\mathbf{a}^{(1)}\cdots
 			\\
-			\mathbf{a}^{(2)}^\mathbf{T}
+			\cdots\mathbf{a}^{(2)}\cdots
 			\\
 			\vdots 
 			\\
-			\mathbf{a}^{(s)}^\mathbf{T}
+			\cdots\mathbf{a}^{(s)}\cdots
 		\end{bmatrix}.
 $$
 
