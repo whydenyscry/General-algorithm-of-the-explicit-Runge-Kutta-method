@@ -17,10 +17,16 @@ $$ \mathbf{x}_{n+1} = \mathbf{x}_n+\tau\sum\limits\_{i=1}^{s}b\_i\mathbf{k}\_{i}
 
 where 
 
-$$ \begin{cases}
+$$ 
+\begin{cases}
 			\mathbf{k}\_{1}^{(n)} = \mathbf{f}\left(t_n,\mathbf{x}\_n\right),\\
 			\vdots\\
 			\mathbf{k}\_{i}^{(n)} = \mathbf{f}\left(t_n + c_i \tau, \mathbf{x}\_n + \tau\displaystyle\sum_{j=1}^{i-1} a_{i,j}\mathbf{k}_{j}^{(n)}\right).
-		\end{cases},\quad i=\overline{2,s} $$
+\end{cases}
+\\
+i=\overline{2,s}.
+$$
+
+
 ## References
 1. Butcher, J. C. (2016). Numerical methods for ordinary differential equations. John Wiley & Sons.
