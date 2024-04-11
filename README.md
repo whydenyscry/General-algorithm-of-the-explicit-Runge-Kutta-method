@@ -59,7 +59,7 @@ $$ \begin{array}{r|cccc}
 			1           & 0          & 0           & 1        & \\
 			\hline
 			& 1/6      & 1/3      & 1/3      & 1/6    \\
-\end{array} \quad \Rightarrow \begin{array}{c|cccc}
+\end{array} \quad \Rightarrow \quad \begin{array}{c|cccc}
 				0   & 0   & 0   & 0   & 0\\
 				1/2 & 1/2 & 0   & 0   & 0\\
 				1/2 & 0   & 1/2 & 0   & 0\\
