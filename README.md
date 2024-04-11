@@ -83,14 +83,10 @@ and the matrix $\mathbf{A}$:
 
 $$ \mathbf{A}\_{s\times s} = 
 		\begin{bmatrix}
-			\cdots\mathbf{a}^{(1)}\cdots
-			\\
-			\cdots\mathbf{a}^{(2)}\cdots
-			\\
-			\vdots 
-			\\
-			\cdots\mathbf{a}^{(s)}\cdots
-		\end{bmatrix}.
+			\mathbf{a}^{(1)},
+			\mathbf{a}^{(2)}\cdots,
+			\mathbf{a}^{(s)}
+		\end{bmatrix}^\mathbf{T}.
 $$
 
 Then the formulas for filling the matrix $\mathbf{K}^{(n)}$ can be represented as follows:
