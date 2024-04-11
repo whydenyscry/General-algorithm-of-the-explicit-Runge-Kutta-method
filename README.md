@@ -13,7 +13,7 @@ where $\mathbf{x}=\left[x_1,\dots,x_m\right]^\mathbf{T},\quad
 	
 The $s$-stage Runge-Kutta method can be expressed as follows:
 	
-	$$ \mathbf{x}_{n+1} = \mathbf{x}_n+\tau\sum\limits_{i=1}^{s}b_i\mathbf{k}_{i}^{(n)},$$
+	$$ \mathbf{x}_{n+1} = \mathbf{x}_n+\tau\sum\limits_{i=1}^{s}b_i\mathbf{k}_{i}^{(n)}, $$
 	
 	$$ \begin{cases}
 			\mathbf{k}_{1}^{(n)} = \mathbf{f}\left(t_n,\mathbf{x}_n\right),\\[0.25 cm]
