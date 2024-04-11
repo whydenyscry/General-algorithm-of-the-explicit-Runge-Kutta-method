@@ -45,8 +45,10 @@ $$
 			c_s   & a_{s,1}  & a_{s,2}  & \cdots  & a_{s,s-1} \\
 			\hline
 			& b_1     & b_2     & \cdots  & b_{s-1} & b_s
-		\end{array} 
+		\end{array},
 $$
+
+$$ \mathbf{c},\mathbf{b} \in \mathbb{R}^s,\quad \mathbf{A} \in \mathbb{R}^{s\times s}. $$
 
 ## References
 1. Butcher, J. C. (2016). Numerical methods for ordinary differential equations. John Wiley & Sons.
