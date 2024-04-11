@@ -108,10 +108,10 @@ $$ i=\overline{2,s}.$$
 The _ExampleOfUse.mlx_ file shows the obtaining of the Tamari attractor
 
 $$ \begin{cases}
-			\frac{\mathrm{d}x}{\mathrm{d}t} =\left(x-\alpha y\right)\cos z-\beta y \sin z, \\[0.2 cm]
-			\frac{\mathrm{d}y}{\mathrm{d}t} = \left(x+\gamma y\right)\sin z +\delta y\cos z, \\[0.2 cm]
+			\frac{\mathrm{d}x}{\mathrm{d}t} =\left(x-\alpha y\right)\cos z-\beta y \sin z, \\
+			\frac{\mathrm{d}y}{\mathrm{d}t} = \left(x+\gamma y\right)\sin z +\delta y\cos z, \\
 			\frac{\mathrm{d}z}{\mathrm{d}t} = \varepsilon +\kappa z+\xi\arctan\left(\dfrac{1-\varsigma}{1-\omega}xy\right),
-		\end{cases} 
+	\end{cases} 
 $$
 
 $$ \begin{bmatrix}
@@ -139,7 +139,7 @@ $$ \begin{bmatrix}
 
 with initial conditions
 
-$\mathbf{x}_0 = [x_0,y_0,z_0]^\mathbf{T} = [1 1 1]^\mathbf{T},$
+$\mathbf{x}_0 = [x_0,y_0,z_0]^\mathbf{T} = [1, 1, 1]^\mathbf{T},$
 
 using the 6th order Runge-Kutta-Butcher method.
 
