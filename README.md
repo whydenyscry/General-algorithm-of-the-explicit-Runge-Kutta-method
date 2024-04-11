@@ -67,6 +67,36 @@ $$ \begin{array}{r|cccc}
 				\hline
 				& 1/6 & 1/3 & 1/3 & 1/6\\
 		\end{array} $$
+		
+## Description of the implemented algorithm
+Of course, you can implement the algorithm described in the last section as well, and it will work the same way as the algorithm I will describe below. 
+
+$$ \mathbf{x}_{n+1} = \mathbf{x}_n+\tau\mathbf{K}^{(n)}\mathbf{b}, $$
+
+$$ \mathbf{K}^{(n)}_{m\times s}=\left[\mathbf{k}_1^{(n)},\mathbf{k}_2^{(n)},\ldots,\mathbf{k}_s^{(n)}\right]=\mathbf{0}\_{m\times s} $$
+
+$$ \mathbf{A}_{s\times s} = 
+		\begin{bmatrix}
+			\mathbf{a}_1^\mathbf{T}
+			\\
+			\mathbf{a}_2^\mathbf{T}
+			\\
+			\vdots 
+			\\
+			\mathbf{a}_s^\mathbf{T}
+		\end{bmatrix}, 
+$$
+
+$$ \begin{cases}
+			\mathbf{k}_{1}^{(n)} = \mathbf{f}\left(t_n,\mathbf{x}_n\right),\\
+			\vdots\\
+			\mathbf{k}_{i}^{(n)} = \mathbf{f}\left(t_n + c_i \tau, \mathbf{x}_n + \tau\mathbf{K}^{(n)}\_{m\times i-1}\mathbf{a}_i\right),
+	\end{cases}
+$$
+
+$$ i=\overline{2,s} $$
+
+
 
 ## References
 1. Butcher, J. C. (2016). Numerical methods for ordinary differential equations. John Wiley & Sons.
