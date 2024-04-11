@@ -71,10 +71,14 @@ $$ \begin{array}{r|cccc}
 ## Description of the implemented algorithm
 Of course, you can implement the algorithm described in the last section as well, and it will work the same way as the algorithm I will describe below. 
 
-$$ \mathbf{x}_{n+1} = \mathbf{x}_n+\tau\mathbf{K}^{(n)}\mathbf{b}, $$
+So, the algorithm is based on the application of general matrix algebra:
 
-$$ \mathbf{K}^{(n)}\_{m\times s}=\left[\mathbf{k}_1^{(n)},\mathbf{k}_2^{(n)},\ldots,\mathbf{k}_s^{(n)}\right]=\mathbf{0}\_{m\times s} $$
+$$ \mathbf{x}_{n+1} = \mathbf{x}_n+\tau\mathbf{K}^{(n)}\mathbf{b}.$$
 
+To begin with, at each iteration we need to initialize the matrix $\mathbf{K}^{(n)}$ of the corresponding size as a zero matrix and this matrix is interpreted as follows:
+$$ \mathbf{K}^{(n)}\_{m\times s}=\left[\mathbf{k}_1^{(n)},\mathbf{k}_2^{(n)},\ldots,\mathbf{k}_s^{(n)}\right]=\mathbf{0}\_{m\times s}, $$
+
+and the matrix $\mathbf{A}$:
 $$ \mathbf{A}\_{s\times s} = 
 		\begin{bmatrix}
 			\mathbf{a}_1^\mathbf{T}
@@ -84,9 +88,10 @@ $$ \mathbf{A}\_{s\times s} =
 			\vdots 
 			\\
 			\mathbf{a}_s^\mathbf{T}
-		\end{bmatrix}, 
+		\end{bmatrix}.
 $$
 
+Then the formulas for filling the matrix $\mathbf{K}^{(n)}$ can be represented as follows:
 $$ \begin{cases}
 			\mathbf{k}\_{1}^{(n)} = \mathbf{f}\left(t_n,\mathbf{x}_n\right),\\
 			\vdots\\
@@ -94,7 +99,7 @@ $$ \begin{cases}
 	\end{cases}
 $$
 
-$$ i=\overline{2,s} $$
+$$ i=\overline{2,s}.$$
 
 
 
