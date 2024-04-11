@@ -83,13 +83,13 @@ and the matrix $\mathbf{A}$:
 
 $$ \mathbf{A}\_{s\times s} = 
 		\begin{bmatrix}
-			\mathbf{a}_1^\mathbf{T}
+			\mathbf{a}^{(1)}^\mathbf{T}
 			\\
-			\mathbf{a}_2^\mathbf{T}
+			\mathbf{a}^{(2)}^\mathbf{T}
 			\\
 			\vdots 
 			\\
-			\mathbf{a}_s^\mathbf{T}
+			\mathbf{a}^{(s)}^\mathbf{T}
 		\end{bmatrix}.
 $$
 
@@ -98,7 +98,7 @@ Then the formulas for filling the matrix $\mathbf{K}^{(n)}$ can be represented a
 $$ \begin{cases}
 			\mathbf{k}\_{1}^{(n)} = \mathbf{f}\left(t_n,\mathbf{x}_n\right),\\
 			\vdots\\
-			\mathbf{k}\_{i}^{(n)} = \mathbf{f}\left(t_n + c_i \tau, \mathbf{x}_n + \tau\mathbf{K}^{(n)}\_{m\times i-1}\mathbf{a}_i\right),
+			\mathbf{k}\_{i}^{(n)} = \mathbf{f}\left(t_n + c_i \tau, \mathbf{x}_n + \tau\mathbf{K}^{(n)}\_{m\times i-1}\mathbf{a}\_{i-1\times 1}^{(i)}\right),
 	\end{cases}
 $$
 
