@@ -143,5 +143,7 @@ $$\mathbf{x}_0 = [x_0,y_0,z_0]^\mathbf{T} = [1, 1, 1]^\mathbf{T},$$
 
 using the 6th order Runge-Kutta-Butcher method.
 
+![The Tamari Attractor](https://github.com/whydenyscry/General-algorithm-of-the-explicit-Runge-Kutta-method/blob/main/The_Tamari_Attractor.png)
+
 ## References
 1. Butcher, J. C. (2016). Numerical methods for ordinary differential equations. John Wiley & Sons.
