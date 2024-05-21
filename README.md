@@ -9,6 +9,9 @@ All you have to do is fill in the Butcher table for the method you want the IVP 
 - [Description of the implemented algorithm](#description-of-the-implemented-algorithm)
 - [Example](#example)
 - [Notes](#notes)
+ - [Input Arguments](#input-arguments)
+ - [Output Arguments](#output-arguments)
+ - [About Optimized Script](#about-optimized-script)
 - [Planned Features](#planned-features)
 - [References](#references)
 
@@ -155,6 +158,22 @@ using the 6th order Runge-Kutta-Butcher method.
 ![The Tamari Attractor](https://github.com/whydenyscry/General-algorithm-of-the-explicit-Runge-Kutta-method/blob/main/The_Tamari_Attractor.png)
 
 ## Notes
+
+### Input Arguments
+- `c_vector`: vector of coefficients $\mathbf{c}$ of Butcher tableau for the selected method;
+- `A_matrix`: matrix of coefficients $\mathbf{A}$ of Butcher tableau for the selected method;
+- `b_vector`: vector of coefficients $\mathbf{b}$ of Butcher tableau for the selected method;
+- `odefun`: functions to solve, specified as a function handle that defines the functions to be integrated;
+- `tspan`: interval of integration, specified as a two-element vector;
+- `tau`: time discretization step;
+- `incond`: vector of initial conditions.
+
+### Output Arguments
+- `t`: vector of evaluation points used to perform the integration;
+- `xsol`: solution matrix in which each row corresponds to a solution at the value returned in the corresponding row of `t`.
+
+### About Optimized Script
+
 The code from the _odeExplicitGeneral.m_ script shows a more illustrative integration procedure, for understanding from a theoretical point of view. The optimized version of this script _odeExplicitGeneral_optimized.m_ looks as follows:
 ```MATLAB
 function [t, xsol] = odeExplicitGeneral_optimized(c_vector, A_matrix, b_vector, odefun, tspan, tau, incond)
@@ -184,8 +203,9 @@ end
 With only 23 lines for such a powerful instrument, it looks awesome, doesn't it?
 
 Here no unnecessary variables are created, and the `K_matrix` is initialized as zero matrix only once, because the algorithm allows not to fill it with zeros at each iteration, but just to overwrite the columns at this iteration without using the columns with coeficients from the previous one: 
-
-`K_matrix(:, i) = odefun(t(n) + tau * c_vector(i), xsol(:, n) + tau * K_matrix(:, 1:i-1) * A_matrix(i, 1:i-1)')`.
+```MATLAB
+K_matrix(:, i) = odefun(t(n) + tau * c_vector(i), xsol(:, n) + tau * K_matrix(:, 1:i-1) * A_matrix(i, 1:i-1)')
+```
 
 ## Planned Features
 - based on this script, add specific integrators, as I did [here](https://github.com/whydenyscry/Dynamics-of-Nonlinear-Attractors/blob/main/odeCRK4.m) with the Runge-Kutta method of order 4.
