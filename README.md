@@ -1,7 +1,7 @@
 # General algorithm of the explicit Runge—Kutta method
 Below I will describe an algorithm for solving IVP by any explicit Runge-Kutta method of any order for any dimensionality of the system, I have not seen such an implementation anywhere. 
 The advantage of this algorithm is that the code will look much more compact, since you will not have to create cumbersome and long expressions to compute this or that expression for each individual IVP. 
-All you have to do is fill in the Butcher table for the method you want the IVP to be solved by.
+All you have to do is fill in the Butcher tableau for the method you want the IVP to be solved by.
 
 ## Table of Contents
 
@@ -81,7 +81,7 @@ $$ \begin{array}{r|cccc}
 		\end{array} $$
 		
 ## Description of the implemented algorithm
-Of course, you can implement the algorithm described in the last section as well, and it will work the same way as the algorithm I will describe below. 
+Of course, you can implement the algorithm described in the previous section as well, and it will work the same way as the algorithm I will describe below. 
 
 So, the algorithm is based on the application of general matrix algebra:
 
@@ -212,4 +212,4 @@ K_matrix(:, i) = odefun(t(n) + tau * c_vector(i), xsol(:, n) + tau * K_matrix(:,
 
 
 ## References
-1. Butcher, J. C. (2016). Numerical methods for ordinary differential equations. John Wiley & Sons.
+1. Butcher, J. C. (2016). Numerical Methods for Ordinary Differential Equations. doi:10.1002/9781119121534
