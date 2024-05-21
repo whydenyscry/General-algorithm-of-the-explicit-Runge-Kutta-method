@@ -212,4 +212,4 @@ K_matrix(:, i) = odefun(t(n) + tau * c_vector(i), xsol(:, n) + tau * K_matrix(:,
 
 
 ## References
-1. Butcher, J. C. (2016). Numerical Methods for Ordinary Differential Equations. doi:10.1002/9781119121534
+1. Butcher, J. C. (2016). Numerical Methods for Ordinary Differential Equations. https://doi.org/10.1002/9781119121534
