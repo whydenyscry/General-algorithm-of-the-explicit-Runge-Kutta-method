@@ -3,6 +3,15 @@ Below I will describe an algorithm for solving IVP by any explicit Runge-Kutta m
 The advantage of this algorithm is that the code will look much more compact, since you will not have to create cumbersome and long expressions to compute this or that expression for each individual IVP. 
 All you have to do is fill in the Butcher table for the method you want the IVP to be solved by.
 
+## Table of Contents
+
+- [Explicit Runge—Kutta methods. Butcher tableau](#Explicit Runge—Kutta methods. Butcher tableau)
+- [Description of the implemented algorithm](#Description of the implemented algorithm)
+- [Example](#Example)
+- [Notes](#Notes)
+- [Planned Features](#Planned Features)
+- [References](#References)
+
 ## Explicit Runge—Kutta methods. Butcher tableau
 Let an initial value problem be specified as follows:
 
