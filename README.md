@@ -175,7 +175,8 @@ end
 With only 23 lines for such a powerful instrument, it looks awesome, doesn't it?
 
 Here no unnecessary variables are created, and the `K_matrix` is initialized as zero matrix only once, because the algorithm allows not to fill it with zeros at each iteration, but just to overwrite the columns at this iteration without using the columns with coeficients from the previous one: 
-K_matrix(:, i) = odefun(t(n) + tau * c_vector(i), xsol(:, n) + tau * <span style=“color:red;”>K_matrix(:, 1:i-1)</span> * A_matrix(i, 1:i-1)').
+
+`K_matrix(:, i) = odefun(t(n) + tau * c_vector(i), xsol(:, n) + tau * K_matrix(:, 1:i-1) * A_matrix(i, 1:i-1)')`.
 
 ## Planned Features
 - based on this script, add specific integrators, as I did [here](https://github.com/whydenyscry/Dynamics-of-Nonlinear-Attractors/blob/main/odeCRK4.m) with the Runge-Kutta method of order 4.
