@@ -9,9 +9,9 @@ All you have to do is fill in the Butcher table for the method you want the IVP 
 - [Description of the implemented algorithm](#description-of-the-implemented-algorithm)
 - [Example](#example)
 - [Notes](#notes)
- - [Input Arguments](#input-arguments)
- - [Output Arguments](#output-arguments)
- - [About Optimized Script](#about-optimized-script)
+  - [Input Arguments](#input-arguments)
+  - [Output Arguments](#output-arguments)
+  - [About Optimized Script](#about-optimized-script)
 - [Planned Features](#planned-features)
 - [References](#references)
 
