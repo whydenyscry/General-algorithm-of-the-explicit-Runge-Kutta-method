@@ -145,5 +145,41 @@ using the 6th order Runge-Kutta-Butcher method.
 
 ![The Tamari Attractor](https://github.com/whydenyscry/General-algorithm-of-the-explicit-Runge-Kutta-method/blob/main/The_Tamari_Attractor.png)
 
+## Notes
+The code from the _odeExplicitGeneral.m_ script shows a more illustrative integration procedure, for understanding from a theoretical point of view. The optimized version of this script _odeExplicitGeneral_optimized.m_ looks as follows:
+```MATLAB
+function [t, xsol] = odeExplicitGeneral_optimized(c_vector, A_matrix, b_vector, odefun, tspan, tau, incond)
+
+s_stages = length(c_vector);
+m = length(incond);
+
+c_vector = reshape(c_vector, [s_stages 1]);
+b_vector = reshape(b_vector, [s_stages 1]);
+incond = reshape(incond, [m 1]);
+
+t = (tspan(1):tau :tspan(2))';
+xsol = zeros(length(incond), length(t));
+xsol(:, 1) = incond(:);
+K_matrix = zeros(m, s_stages);
+
+for n = 1:length(t)-1
+    K_matrix(:, 1) = odefun(t(n), xsol(:, n));   
+        for i = 2:s_stages
+            K_matrix(:, i) = odefun(t(n) + tau * c_vector(i), xsol(:, n) + tau * K_matrix(:, 1:i-1) * A_matrix(i, 1:i-1)');
+        end
+    xsol(:, n+1) = xsol(:, n) + tau * K_matrix * b_vector;
+end
+xsol = xsol';
+end
+```
+With only 23 lines for such a powerful instrument, it looks awesome, doesn't it?
+
+Here no unnecessary variables are created, and the `K_matrix` is initialized as zero matrix only once, because the algorithm allows not to fill it with zeros at each iteration, but just to overwrite the columns at this iteration without using the columns with coeficients from the previous one: 
+`K_matrix(:, i) = odefun(t(n) + tau * c_vector(i), xsol(:, n) + tau * <span style=“color:red;”>K_matrix(:, 1:i-1)</span> * A_matrix(i, 1:i-1)')`.
+
+## Planned Features
+- based on this script, add specific integrators, as I did [here](https://github.com/whydenyscry/Dynamics-of-Nonlinear-Attractors/blob/main/odeCRK4.m) with the Runge-Kutta method of order 4.
+
+
 ## References
 1. Butcher, J. C. (2016). Numerical methods for ordinary differential equations. John Wiley & Sons.
