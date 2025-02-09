@@ -5,7 +5,7 @@ All you have to do is fill in the Butcher tableau for the method you want the IV
 
 ## Table of Contents
 
-- [Explicit Runge—Kutta methods. Butcher tableau](#explicit-rungekutta-methods-butcher-tableau)
+- [Explicit Runge—Kutta methods. Butcher tableau. Stability Function & Stability Region](#explicit-rungekutta-methods)
 - [Description of the implemented algorithm](#description-of-the-implemented-algorithm)
 - [Example](#example)
 - [Notes](#notes)
@@ -15,7 +15,7 @@ All you have to do is fill in the Butcher tableau for the method you want the IV
 - [Planned Features](#planned-features)
 - [References](#references)
 
-## Explicit Runge—Kutta methods. Butcher tableau
+## Explicit Runge—Kutta methods
 Let an initial value problem be specified as follows:
 
 $$ \dot{\mathbf{x}}=\mathbf{f}\left(t,\mathbf{x}\right),\quad t \in \left[t_0,t_\text{end}\right],\quad \mathbf{x}\left(t_0\right) = \mathbf{x}_0 \in \mathbb{R}^m, $$
@@ -79,6 +79,24 @@ $$ \begin{array}{r|cccc}
 				\hline
 				& 1/6 & 1/3 & 1/3 & 1/6\\
 		\end{array} $$
+		
+In the context of stability analysis of explicit Runge---Kutta methods, the stability region is defined as $\left\{z\in\mathbb{C}:\left|R\left(z\right)\right|\leq1\right\}$, where
+
+$$
+R\left(z\right) = 1 + z \mathbf{b}^\mathrm{T} \left(\mathbf{I} - z \mathbf{A}\right)^{-1} \mathbf{1} = \frac{\det\left(\mathbf{I} - z\mathbf{A} + z\mathbf{1}\mathbf{b}^\mathrm{T}\right)}{\det\left(\mathbf{I} - z\mathbf{A}\right)}.
+$$
+
+is stability function. For explicit Runge—Kutta methods in which the number of stages equals the order (i.e. $s = p$, which is possible for orders 1 through 4), the order conditions force the stability function to match the Taylor (McLaurin) expansion of $\exp(z)$ up to and including the $z^p$ term. In other words, for these methods one obtains
+
+$$
+R(z) = \sum_{k=0}^{p} \frac{z^k}{k!}.
+$$
+
+The bounds of stability regions for such methods are presented below:
+
+<p align="center">
+  <img src="ExampleOfUse/Stability_Regions.png"/>
+</p>
 		
 ## Description of the implemented algorithm
 Of course, you can implement the algorithm described in the previous section as well, and it will work the same way as the algorithm I will describe below. 
@@ -155,7 +173,9 @@ $$\mathbf{x}_0 = [x_0,y_0,z_0]^\mathbf{T} = [1, 1, 1]^\mathbf{T},$$
 
 using the 6th order Runge-Kutta-Butcher method.
 
-![The Tamari Attractor](https://github.com/whydenyscry/General-algorithm-of-the-explicit-Runge-Kutta-method/blob/main/The_Tamari_Attractor.png)
+<p align="center">
+  <img src="ExampleOfUse/The_Tamari_Attractor.png"/>
+</p>
 
 ## Notes
 
@@ -206,9 +226,6 @@ With only 23 lines for such a powerful instrument, it looks awesome, doesn't it?
 ```MATLAB
 K_matrix(:, i) = odefun(t(n) + tau * c_vector(i), xsol(:, n) + tau * K_matrix(:, 1:i-1) * A_matrix(i, 1:i-1)')
 ```
-
-## Planned Features
-- based on this script, add specific integrators, as I did [here](https://github.com/whydenyscry/Dynamics-of-Nonlinear-Attractors/blob/main/odeCRK4.m) with the Runge-Kutta method of order 4.
 
 
 ## References
