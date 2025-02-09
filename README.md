@@ -83,7 +83,7 @@ $$ \begin{array}{r|cccc}
 In the context of stability analysis of explicit Runge---Kutta methods, the stability region is defined as $\left\{z\in\mathbb{C}:\left|R\left(z\right)\right|\leq1\right\}$, where
 
 $$
-R\left(z\right) = 1 + z \mathbf{b}^\mathrm{T} \left(\mathbf{I} - z \mathbf{A}\right)^{-1} \mathbf{1} = \frac{\det\left(\mathbf{I} - z\mathbf{A} + z\mathbf{1}\mathbf{b}^\mathrm{T}\right)}{\det\left(\mathbf{I} - z\mathbf{A}\right)}.
+R\left(z\right) = 1 + z \mathbf{b}^\mathrm{T} \left(\mathbf{I} - z \mathbf{A}\right)^{-1} \mathbf{1} = \frac{\det\left(\mathbf{I} - z\mathbf{A} + z\mathbf{1}\mathbf{b}^\mathrm{T}\right)}{\det\left(\mathbf{I} - z\mathbf{A}\right)}
 $$
 
 is stability function. For explicit Runge—Kutta methods in which the number of stages equals the order (i.e. $s = p$, which is possible for orders 1 through 4), the order conditions force the stability function to match the Taylor (McLaurin) expansion of $\exp(z)$ up to and including the $z^p$ term. In other words, for these methods one obtains
