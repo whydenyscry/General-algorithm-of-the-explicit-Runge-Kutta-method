@@ -1,4 +1,4 @@
-# General algorithm of the explicit Runge—Kutta method
+# General Algorithm of The Explicit Runge—Kutta Method
 Below I will describe an algorithm for solving IVP by any explicit Runge-Kutta method of any order for any dimensionality of the system, I have not seen such an implementation anywhere. 
 The advantage of this algorithm is that the code will look much more compact, since you will not have to create cumbersome and long expressions to compute this or that expression for each individual IVP. 
 All you have to do is fill in the Butcher tableau for the method you want the IVP to be solved by.
@@ -87,7 +87,7 @@ $$
 R\left(z\right) = 1 + z \mathbf{b}^\mathrm{T} \left(\mathbf{I} - z \mathbf{A}\right)^{-1} \mathbf{1} = \frac{\det\left(\mathbf{I} - z\mathbf{A} + z\mathbf{1}\mathbf{b}^\mathrm{T}\right)}{\det\left(\mathbf{I} - z\mathbf{A}\right)}
 $$
 
-is stability function. For explicit Runge—Kutta methods in which the number of stages equals the order (i.e. $s = p$, which is possible for orders 1 through 4), the order conditions force the stability function to match the Taylor (McLaurin) expansion of $\exp(z)$ up to and including the $z^p$ term. In other words, for these methods one obtains
+is stability function. For explicit Runge—Kutta methods in which the number of stages equals the order (i.e. $s = p$, which is possible for orders 1 through 4), the order conditions force the stability function to match the Taylor (Maclaurin) expansion of $\exp(z)$ up to and including the $z^p$ term. In other words, for these methods one obtains
 
 $$
 R\left(z\right) = \sum_{k=0}^{p} \frac{z^k}{k!}.
