@@ -147,7 +147,7 @@ $$
 $$ i=\overline{2,s}.$$
 
 ## Example 
-The _ExampleOfUse.mlx_ file shows the obtaining of the Tamari attractor
+The [ExampleOfUse.mlx](ExampleOfUse/ExampleOfUse.pdf) file shows the obtaining of the Tamari attractor
 
 $$ \begin{cases}
 			\frac{\mathrm{d}x}{\mathrm{d}t} =\left(x-\alpha y\right)\cos z-\beta y \sin z, \\
