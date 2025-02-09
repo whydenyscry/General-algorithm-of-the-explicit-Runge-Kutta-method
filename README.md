@@ -80,7 +80,7 @@ $$ \begin{array}{r|cccc}
 				& 1/6 & 1/3 & 1/3 & 1/6\\
 		\end{array} $$
 		
-In the context of stability analysis of explicit Runge---Kutta methods, the stability region is defined as $\left\{z\in\mathbb{C}:\left|R\left(z\right)\right|\leq1\right\}$, where
+In the context of stability analysis of explicit Runge---Kutta methods, the stability region is defined as \(\left\{z\in\mathbb{C}:\left|R\left(z\right)\right|\leq1\right\}\), where
 
 $$
 R\left(z\right) = 1 + z \mathbf{b}^\mathrm{T} \left(\mathbf{I} - z \mathbf{A}\right)^{-1} \mathbf{1} = \frac{\det\left(\mathbf{I} - z\mathbf{A} + z\mathbf{1}\mathbf{b}^\mathrm{T}\right)}{\det\left(\mathbf{I} - z\mathbf{A}\right)}
