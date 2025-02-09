@@ -9,6 +9,7 @@ All you have to do is fill in the Butcher tableau for the method you want the IV
 - [Description of the implemented algorithm](#description-of-the-implemented-algorithm)
 - [Example](#example)
 - [Notes](#notes)
+  - [Syntax](#syntax)
   - [Input Arguments](#input-arguments)
   - [Output Arguments](#output-arguments)
   - [About Optimized Script](#about-optimized-script)
@@ -89,13 +90,25 @@ $$
 is stability function. For explicit Runge—Kutta methods in which the number of stages equals the order (i.e. $s = p$, which is possible for orders 1 through 4), the order conditions force the stability function to match the Taylor (McLaurin) expansion of $\exp(z)$ up to and including the $z^p$ term. In other words, for these methods one obtains
 
 $$
-R(z) = \sum_{k=0}^{p} \frac{z^k}{k!}.
+R\left(z\right) = \sum_{k=0}^{p} \frac{z^k}{k!}.
 $$
 
 The bounds of stability regions for such methods are presented below:
 
 <p align="center">
   <img src="ExampleOfUse/Stability_Regions.png"/>
+</p>
+
+For the method with $s=6, p=5$ used in the [odeRKB5.m](odeExplicitSolvers/odeRKB5.m) script, the stability function is:
+
+$$
+R\left(z\right)= 1 + z + \frac{z^2}{2} + \frac{z^3}{6} + \frac{z^4}{24} + \frac{z^5}{120} + \frac{z^6}{1280},
+$$
+
+and the stability region is presented below:
+
+<p align="center">
+  <img src="ExampleOfUse/Stability_Region_RKB5.png"/>
 </p>
 		
 ## Description of the implemented algorithm
@@ -178,6 +191,9 @@ using the 6th order Runge-Kutta-Butcher method.
 </p>
 
 ## Notes
+
+### Syntax
+`[t, xsol] = odeExplicitGeneral(c_vector, A_matrix, b_vector, odefun, tspan, tau, incond)`
 
 ### Input Arguments
 - `c_vector`: vector of coefficients $\mathbf{c}$ of Butcher tableau for the selected method;
