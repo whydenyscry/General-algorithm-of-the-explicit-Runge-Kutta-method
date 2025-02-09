@@ -1,7 +1,7 @@
 # General Algorithm of The Explicit Runge—Kutta Method
-Below I will describe an algorithm for solving IVP by any explicit Runge-Kutta method of any order for any dimensionality of the system, I have not seen such an implementation anywhere. 
-The advantage of this algorithm is that the code will look much more compact, since you will not have to create cumbersome and long expressions to compute this or that expression for each individual IVP. 
-All you have to do is fill in the Butcher tableau for the method you want the IVP to be solved by.
+This repository contains an algorithm for solving initial value problems (IVPs) using any explicit Runge—Kutta method of any order and for systems of arbitrary dimensionality. 
+Unlike conventional implementations, this approach allows for a more compact and flexible code structure by eliminating the need to manually derive and write out lengthy expressions for each specific IVP. 
+Instead, the user simply provides the Butcher tableau corresponding to the desired Runge—Kutta method, making the implementation both general and efficient.
 
 ## Table of Contents
 
