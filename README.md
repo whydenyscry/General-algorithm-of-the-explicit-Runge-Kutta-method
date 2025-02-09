@@ -13,7 +13,6 @@ All you have to do is fill in the Butcher tableau for the method you want the IV
   - [Input Arguments](#input-arguments)
   - [Output Arguments](#output-arguments)
   - [About Optimized Script](#about-optimized-script)
-- [Planned Features](#planned-features)
 - [References](#references)
 
 ## Explicit Runge—Kutta methods
