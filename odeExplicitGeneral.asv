@@ -1,16 +1,14 @@
 function [t, zsol, dzdt_eval] = odeExplicitGeneral(c_vector, A_matrix, b_vector, odefun, tspan, tau, incond)
-
 c = c_vector(:);
 A = A_matrix;
 b = b_vector(:);
-z_0 = incond(:);
 dzdt = odefun;
 
 s_stages = numel(c);
-m = numel(z_0);
+m = numel(incond);
 
 
-tol = 1e-10;
+tol = 100 * eps;
 
 if numel(b) ~= s_stages
     error('b_vector must have the same length as c_vector.');
@@ -28,7 +26,7 @@ if abs(c(1)) > tol
     warning('c_vector(1) is not zero; first stage is assumed at c = 0.');
 end
 
-if numel(dzdt(tspan(1), z_0)) ~= m
+if numel(dzdt(tspan(1), incond)) ~= m
     error('odefun must return a vector of the same size as incond.');
 end
 
@@ -52,7 +50,7 @@ N = numel(t);
 zsol = zeros(m, N);
 K = zeros(m, s_stages);
 
-zsol(:, 1) = z_0;
+zsol(:, 1) = incond;
 
 calc_dzdt = (nargout > 2);
 if calc_dzdt
@@ -66,7 +64,7 @@ for n = 1:N - 1
     K(:, 1) = dzdt(t(n), zsol(:, n)); 
     
     if calc_dzdt
-        dzdt_eval(n, :) = K(:, 1) .';
+        dzdt_eval(:, n) = K(:, 1) .';
     end
 
     for i = 2:s_stages

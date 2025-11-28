@@ -1,4 +1,4 @@
-function [t, xsol] = odeRKN5(odefun, tspan, tau, incond)
+function [t, zsol, dzdt_eval] = odeRKN5(odefun, tspan, tau, incond)
 % Coefficients of the Runge—Kutta—Nyström method of the 5th order.
 
 c_vector = [0 1/3 2/5 1 2/3 4/5]';
@@ -12,5 +12,5 @@ A_matrix = [0 0 0 0 0 0;
 
 b_vector = [23/192 0 125/192 0 -27/64 125/192];
 
-[t, xsol] = odeExplicitGeneral(c_vector, A_matrix, b_vector, odefun, tspan, tau, incond);
+[t, zsol, dzdt_eval] = odeExplicitGeneral(c_vector, A_matrix, b_vector, odefun, tspan, tau, incond);
 end

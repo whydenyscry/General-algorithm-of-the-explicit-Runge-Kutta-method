@@ -1,4 +1,4 @@
-function [t, xsol] = odeRKCV8(odefun, tspan, tau, incond)
+function [t, zsol, dzdt_eval] = odeRKCV8(odefun, tspan, tau, incond)
 % Coefficients of the Runge—Kutta—Cooper—Verner method of the 8th order.
 
 c_vector = [0 1/2 1/2 (7+sqrt(21))/14 (7+sqrt(21))/14 1/2 (7-sqrt(21))/14 (7-sqrt(21))/14 1/2 (7+sqrt(21))/14 1]';
@@ -17,5 +17,5 @@ A_matrix = [0 0 0 0 0 0 0 0 0 0 0;
 
 b_vector = [1/20 0 0 0 0 0 0 49/180 16/45 49/180 1/20]';
 
-[t, xsol] = odeExplicitGeneral(c_vector, A_matrix, b_vector, odefun, tspan, tau, incond);
+[t, zsol, dzdt_eval] = odeExplicitGeneral(c_vector, A_matrix, b_vector, odefun, tspan, tau, incond);
 end

@@ -1,4 +1,4 @@
-function [t, xsol] = odeRKB7(odefun, tspan, tau, incond)
+function [t, zsol, dzdt_eval] = odeRKB7(odefun, tspan, tau, incond)
 % Coefficients of the Runge—Kutta—Butcher method of the 7th order.
 
 c_vector = [0 1/6 1/3 1/2 2/11 2/3 6/7 0 1]';
@@ -15,5 +15,5 @@ A_matrix = [0 0 0 0 0 0 0 0 0;
 
 b_vector = [0 0 0 32/105 1771561/6289920 243/2560 16807/74880 77/1440 11/270]';
 
-[t, xsol] = odeExplicitGeneral(c_vector, A_matrix, b_vector, odefun, tspan, tau, incond);
+[t, zsol, dzdt_eval] = odeExplicitGeneral(c_vector, A_matrix, b_vector, odefun, tspan, tau, incond);
 end

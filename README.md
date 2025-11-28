@@ -12,28 +12,27 @@ Instead, the user simply provides the Butcher tableau corresponding to the desir
   - [Syntax](#syntax)
   - [Input Arguments](#input-arguments)
   - [Output Arguments](#output-arguments)
-  - [About Optimized Script](#about-optimized-script)
 - [References](#references)
 
 ## Explicit Runge—Kutta methods
 Let an initial value problem be specified as follows:
 
-$$ \dot{\mathbf{x}}=\mathbf{f}\left(t,\mathbf{x}\right),\quad t \in \left[t_0,t_\text{end}\right],\quad \mathbf{x}\left(t_0\right) = \mathbf{x}_0 \in \mathbb{R}^m, $$
+$$ \dot{\mathbf{z}}=\mathbf{f}\left(t,\mathbf{z}\right),\quad t \in \left[t_0,t_\text{end}\right],\quad \mathbf{z}\left(t_0\right) = \mathbf{z}_0 \in \mathbb{R}^m, $$
 
-where $\mathbf{x}=\left[x_1,\dots,x_m\right]^\mathbf{T},\quad
-	\mathbf{f}\left(t,\mathbf{x}\right)=\left[f_1\left(t,x_1,\dots,x_n\right),\dots,f_m\left(t,x_1,\dots,x_n\right)\right]^\mathbf{T}.$
+where $\mathbf{z}=\left[z_1,\dots,z_m\right]^\top,\quad
+	\mathbf{f}\left(t,\mathbf{z}\right)=\left[f_1\left(t,z_1,\dots,z_n\right),\dots,f_m\left(t,z_1,\dots,z_n\right)\right]^\top.$
 	
 The $s$-stage Runge-Kutta method can be expressed as follows:
 
-$$ \mathbf{x}_{n+1} = \mathbf{x}_n+\tau\sum\limits\_{i=1}^{s}b\_i\mathbf{k}\_{i}^{(n)}, $$
+$$ \mathbf{z}_{n+1} = \mathbf{z}_n+\tau\sum\limits\_{i=1}^{s}b\_i\mathbf{k}\_{i}^{(n)}, $$
 
 where 
 
 $$ 
 \begin{cases}
-			\mathbf{k}\_{1}^{(n)} = \mathbf{f}\left(t_n,\mathbf{x}\_n\right),\\
+			\mathbf{k}\_{1}^{(n)} = \mathbf{f}\left(t_n,\mathbf{z}\_n\right),\\
 			\vdots\\
-			\mathbf{k}\_{i}^{(n)} = \mathbf{f}\left(t_n + c_i \tau, \mathbf{x}\_n + \tau\displaystyle\sum_{j=1}^{i-1} a_{i,j}\mathbf{k}_{j}^{(n)}\right),
+			\mathbf{k}\_{i}^{(n)} = \mathbf{f}\left(t_n + c_i \tau, \mathbf{z}\_n + \tau\displaystyle\sum_{j=1}^{i-1} a_{i,j}\mathbf{k}_{j}^{(n)}\right),
 \end{cases}
 $$
 
@@ -47,7 +46,7 @@ $$
 \begin{array}{r|c}
 			\mathbf{c} & \mathbf{A} \\
 			\hline
-			& \mathbf{b}^{\mathbf{T}}
+			& \mathbf{b}^{\top}
 		\end{array} \quad \Rightarrow
 		\begin{array}{r|ccccc}
 			0     &         &         &         & \\
@@ -92,32 +91,26 @@ $$
 R\left(z\right) = \sum_{k=0}^{p} \frac{z^k}{k!}.
 $$
 
-The bounds of stability regions for such methods are presented below:
+Stability regions for such methods are presented below:
 
 <p align="center">
-  <img src="ExampleOfUse/Stability_Regions.png"/>
+  <img src="ExampleOfUse/Stability_Regions.svg"/>
 </p>
 
-For the method with $s=6, p=5$ used in the [odeRKB5.m](odeExplicitSolvers/odeRKB5.m) script, the stability function is:
+For the method with $s=6, p=5$ used in the [odeRKB5.m](odeExplicitSolvers/odeRKB5.m) script, the stability function is
 
 $$
 R\left(z\right)= 1 + z + \frac{z^2}{2} + \frac{z^3}{6} + \frac{z^4}{24} + \frac{z^5}{120} + \frac{z^6}{1280},
 $$
 
-and the stability region is presented below:
-
-<p align="center">
-  <img src="ExampleOfUse/Stability_Region_RKB5.png"/>
-</p>
-		
 ## Description of the implemented algorithm
 Of course, you can implement the algorithm described in the previous section as well, and it will work the same way as the algorithm I will describe below. 
 
 So, the algorithm is based on the application of general matrix algebra:
 
-$$ \mathbf{x}_{n+1} = \mathbf{x}_n+\tau\mathbf{K}^{(n)}\mathbf{b}.$$
+$$ \mathbf{z}_{n+1} = \mathbf{z}_n+\tau\mathbf{K}^{(n)}\mathbf{b}.$$
 
-To begin with, at each ([also take a look here](#AboutKmatrix)) iteration we need to initialize the matrix $\mathbf{K}^{(n)}$ of the corresponding size as a zero matrix and this matrix is interpreted as follows:
+To begin with, we need to initialize the matrix $\mathbf{K}^{(n)}$ of the corresponding size as a zero matrix and this matrix is interpreted as follows:
 
 $$ \mathbf{K}^{(n)}\_{m\times s}=\left[\mathbf{k}_1^{(n)},\mathbf{k}_2^{(n)},\ldots,\mathbf{k}_s^{(n)}\right]=\mathbf{0}\_{m\times s}, $$
 
@@ -125,22 +118,22 @@ and the matrix $\mathbf{A}$:
 
 $$ \mathbf{A}\_{s\times s} = 
 		\begin{bmatrix}
-			\mathbf{a}^{(1)\mathbf{T}}
+			\mathbf{a}^{(1)\top}
 			\\
-			\mathbf{a}^{(2)\mathbf{T}}
+			\mathbf{a}^{(2)\top}
 			\\
 			\vdots 
 			\\
-			\mathbf{a}^{(s)\mathbf{T}}
+			\mathbf{a}^{(s)\top}
 		\end{bmatrix}.
 $$
 
 Then the formulas for filling the matrix $\mathbf{K}^{(n)}$ can be represented as follows:
 
 $$ \begin{cases}
-			\mathbf{k}\_{1}^{(n)} = \mathbf{f}\left(t_n,\mathbf{x}_n\right),\\
+			\mathbf{k}\_{1}^{(n)} = \mathbf{f}\left(t_n,\mathbf{z}_n\right),\\
 			\vdots\\
-			\mathbf{k}\_{i}^{(n)} = \mathbf{f}\left(t_n + c_i \tau, \mathbf{x}_n + \tau\mathbf{K}^{(n)}\_{m\times i-1}\mathbf{a}\_{i-1\times 1}^{(i)}\right),
+			\mathbf{k}\_{i}^{(n)} = \mathbf{f}\left(t_n + c_i \tau, \mathbf{z}_n + \tau\mathbf{K}^{(n)}\_{m\times i-1}\mathbf{a}\_{i-1\times 1}^{(i)}\right),
 	\end{cases}
 $$
 
@@ -181,7 +174,7 @@ $$ \begin{bmatrix}
 
 with initial conditions
 
-$$\mathbf{x}_0 = [x_0,y_0,z_0]^\mathbf{T} = [1, 1, 1]^\mathbf{T},$$
+$$\mathbf{z}_0 = [z_0,y_0,z_0]^\top = [1, 1, 1]^\top$$
 
 using the 6th order Runge-Kutta-Butcher method.
 
@@ -192,7 +185,7 @@ using the 6th order Runge-Kutta-Butcher method.
 ## Notes
 
 ### Syntax
-`[t, xsol] = odeExplicitGeneral(c_vector, A_matrix, b_vector, odefun, tspan, tau, incond)`
+`[t, zsol, dzdt_eval] = odeExplicitGeneral(c_vector, A_matrix, b_vector, odefun, tspan, tau, incond)`
 
 ### Input Arguments
 - `c_vector`: vector of coefficients $\mathbf{c}$ of Butcher tableau for the selected method;
@@ -205,43 +198,8 @@ using the 6th order Runge-Kutta-Butcher method.
 
 ### Output Arguments
 - `t`: vector of evaluation points used to perform the integration;
-- `xsol`: solution matrix in which each row corresponds to a solution at the value returned in the corresponding row of `t`.
-
-### About Optimized Script
-
-The code from the _odeExplicitGeneral.m_ script shows a more illustrative integration procedure, for understanding from a theoretical point of view. The optimized version of this script _odeExplicitGeneral_optimized.m_ looks as follows:
-```MATLAB
-function [t, xsol] = odeExplicitGeneral_optimized(c_vector, A_matrix, b_vector, odefun, tspan, tau, incond)
-
-s_stages = length(c_vector);
-m = length(incond);
-
-c_vector = reshape(c_vector, [s_stages 1]);
-b_vector = reshape(b_vector, [s_stages 1]);
-incond = reshape(incond, [m 1]);
-
-t = (tspan(1):tau :tspan(2))';
-xsol = zeros(length(incond), length(t));
-xsol(:, 1) = incond(:);
-K_matrix = zeros(m, s_stages);
-
-for n = 1:length(t)-1
-    K_matrix(:, 1) = odefun(t(n), xsol(:, n));   
-        for i = 2:s_stages
-            K_matrix(:, i) = odefun(t(n) + tau * c_vector(i), xsol(:, n) + tau * K_matrix(:, 1:i-1) * A_matrix(i, 1:i-1)');
-        end
-    xsol(:, n+1) = xsol(:, n) + tau * K_matrix * b_vector;
-end
-xsol = xsol';
-end
-```
-With only 23 lines for such a powerful instrument, it looks awesome, doesn't it?
-
-<span id="AboutKmatrix"></span> Here no unnecessary variables are created, and the `K_matrix` is initialized as zero matrix only once, because the algorithm allows not to fill it with zeros at each iteration, but just to overwrite the columns at this iteration without using the columns with coeficients from the previous one: 
-```MATLAB
-K_matrix(:, i) = odefun(t(n) + tau * c_vector(i), xsol(:, n) + tau * K_matrix(:, 1:i-1) * A_matrix(i, 1:i-1)')
-```
-
+- `zsol`: solution matrix in which each row corresponds to a solution at the value returned in the corresponding row of `t`;
+- `dzdt_eval`: matrix of derivatives $\dfrac{dz}{dt}$ evaluated at the times in `t`; each row contains the derivative of the solution corresponding to the matching row of `t`.
 
 ## References
 1. Butcher, J. (2016). Numerical methods for ordinary differential equations. https://doi.org/10.1002/9781119121534

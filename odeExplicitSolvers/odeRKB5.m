@@ -1,4 +1,4 @@
-function [t, xsol] = odeRKB5(odefun, tspan, tau, incond)
+function [t, zsol, dzdt_eval] = odeRKB5(odefun, tspan, tau, incond)
 % Coefficients of the Runge—Kutta—Butcher method of the 5th order.
 
 c_vector = [0 1/4 1/4 1/2 3/4 1] .';
@@ -12,5 +12,5 @@ A_matrix = [0 0 0 0 0 0;
 
 b_vector = [7/90 0 32/90 12/90 32/90 7/90] .';
 
-[t, xsol] = odeExplicitGeneral(c_vector, A_matrix, b_vector, odefun, tspan, tau, incond);
+[t, zsol, dzdt_eval] = odeExplicitGeneral(c_vector, A_matrix, b_vector, odefun, tspan, tau, incond);
 end

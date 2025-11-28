@@ -1,4 +1,4 @@
-function [t, xsol] = odeRKB6(odefun, tspan, tau, incond)
+function [t, zsol, dzdt_eval] = odeRKB6(odefun, tspan, tau, incond)
 % Coefficients of the Runge—Kutta—Butcher method of the 6th order.
 
 c_vector = [0 1/3 2/3 1/3 5/6 1/6 1]';
@@ -13,5 +13,5 @@ A_matrix = [0    0    0    0    0    0    0;
 
 b_vector = [13/200 0 11/40 11/40 4/25 4/25 13/200]';
 
-[t, xsol] = odeExplicitGeneral(c_vector, A_matrix, b_vector, odefun, tspan, tau, incond);
+[t, zsol, dzdt_eval] = odeExplicitGeneral(c_vector, A_matrix, b_vector, odefun, tspan, tau, incond);
 end
