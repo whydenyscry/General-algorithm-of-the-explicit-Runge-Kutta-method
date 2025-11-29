@@ -82,7 +82,7 @@ $$ \begin{array}{r|cccc}
 In the context of stability analysis of explicit Runge—Kutta methods, the stability region is defined as $\left\\{z\in\mathbb{C}:\left|R\left(z\right)\right|\leq1\right\\}$, where
 
 $$
-R\left(z\right) = 1 + z \mathbf{b}^\mathrm{T} \left(\mathbf{I} - z \mathbf{A}\right)^{-1} \mathbf{1} = \frac{\det\left(\mathbf{I} - z\mathbf{A} + z\mathbf{1}\mathbf{b}^\mathrm{T}\right)}{\det\left(\mathbf{I} - z\mathbf{A}\right)}
+R\left(z\right) = 1 + z \mathbf{b}^\top \left(\mathbf{I} - z \mathbf{A}\right)^{-1} \mathbf{1} = \frac{\det\left(\mathbf{I} - z\mathbf{A} + z\mathbf{1}\mathbf{b}^\top\right)}{\det\left(\mathbf{I} - z\mathbf{A}\right)}
 $$
 
 is stability function. For explicit Runge—Kutta methods in which the number of stages equals the order (i.e. $s = p$, which is possible for orders 1 through 4), the order conditions force the stability function to match the Taylor (Maclaurin) expansion of $\exp(z)$ up to and including the $z^p$ term. In other words, for these methods one obtains
@@ -142,12 +142,13 @@ $$ i=\overline{2,s}.$$
 ## Example 
 The [ExampleOfUse.mlx](ExampleOfUse/ExampleOfUse.pdf) file shows the obtaining of the Tamari attractor
 
-$$ \begin{cases}
-			\frac{\mathrm{d}x}{\mathrm{d}t} =\left(x-\alpha y\right)\cos z-\beta y \sin z, \\
-			\frac{\mathrm{d}y}{\mathrm{d}t} = \left(x+\gamma y\right)\sin z +\delta y\cos z, \\
-			\frac{\mathrm{d}z}{\mathrm{d}t} = \varepsilon +\kappa z+\xi\arctan\left(\dfrac{1-\varsigma}{1-\omega}xy\right),
-	\end{cases} 
-$$
+```math
+\begin{cases}
+			\dfrac{\mathrm{d}x}{\mathrm{d}t} =\left(x-\alpha y\right)\cos z-\beta y \sin z, \\
+			\dfrac{\mathrm{d}y}{\mathrm{d}t} = \left(x+\gamma y\right)\sin z +\delta y\cos z, \\
+			\dfrac{\mathrm{d}z}{\mathrm{d}t} = \varepsilon +\kappa z+\xi\arctan\left(\dfrac{1-\varsigma}{1-\omega}xy\right),
+\end{cases} 
+```
 
 $$ \begin{bmatrix}
 			\alpha\\
@@ -199,7 +200,7 @@ using the 6th order Runge-Kutta-Butcher method.
 ### Output Arguments
 - `t`: vector of evaluation points used to perform the integration;
 - `zsol`: solution matrix in which each row corresponds to a solution at the value returned in the corresponding row of `t`;
-- `dzdt_eval`: matrix of derivatives $\dfrac{dz}{dt}$ evaluated at the times in `t`; each row contains the derivative of the solution corresponding to the matching row of `t`.
+- `dzdt_eval`: matrix of derivatives $\dfrac{\mathrm{d}\mathbf{z}}{\mathrm{d}t}$ evaluated at the times in `t`; each row contains the derivative of the solution corresponding to the matching row of `t`.
 
 ## References
 1. Butcher, J. (2016). Numerical methods for ordinary differential equations. https://doi.org/10.1002/9781119121534
