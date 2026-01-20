@@ -54,7 +54,7 @@ $$
 \end{array}
 $$
 
-where $`\mathbf{c},\mathbf{b} \in \mathbb{R}^s,\quad \mathbf{A} \in \mathbb{R}^{s\times s}.`$
+where $`\mathbf{c},\mathbf{b} \in \mathbb{R}^s, \mathbf{A} \in \mathbb{R}^{s\times s}.`$
 
 In the program implementation other elements of the matrix $\mathbf{A}$ are given by zeros, for example, the Butcher table for the classical method of order 4 is given in the program as follows:
 
@@ -191,7 +191,7 @@ using the 6th order Runge-Kutta-Butcher method.
 ### Output Arguments
 - `t`: vector of evaluation points used to perform the integration;
 - `zsol`: solution matrix in which each row corresponds to a solution at the value returned in the corresponding row of `t`;
-- `dzdt_eval`: matrix of derivatives $\dfrac{\mathrm{d}\mathbf{z}}{\mathrm{d}t}$ evaluated at the times in `t`; each row contains the derivative of the solution corresponding to the matching row of `t`.
+- `dzdt_eval`: matrix of derivatives $`\dot{\mathbf{z}}\left(t\right)`$ evaluated at the times in `t`; each row contains the derivative of the solution corresponding to the matching row of `t`.
 
 ## References
 1. Butcher, J. (2016). Numerical methods for ordinary differential equations. https://doi.org/10.1002/9781119121534
