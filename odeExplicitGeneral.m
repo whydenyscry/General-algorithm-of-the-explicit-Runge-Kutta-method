@@ -9,7 +9,6 @@ dzdt = odefun;
 s_stages = numel(c);
 m = numel(z_0);
 
-
 tol = 1e-10;
 
 if numel(b) ~= s_stages
