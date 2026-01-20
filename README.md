@@ -23,14 +23,14 @@ where $`\mathbf{z}\left(t\right): \mathbb{R}\mapsto\mathbb{R}^m, \mathbf{f}\left
 	
 The $s$-stage Runge-Kutta method can be expressed as follows:
 ```math
-\mathbf{z}_{n+1} = \mathbf{z}_n+\tau\sum\limits\_{i=1}^{s}b\_i\mathbf{k}\_{i}^{(n)},
+\mathbf{z}_{n+1} = \mathbf{z}_n+\tau\sum\limits_{i=1}^{s}b_i\mathbf{k}_{i}^{(n)},
 ```
 where for $`i=\overline{2,s}`$
 ```math
 \begin{cases}
-			\mathbf{k}\_{1}^{(n)} = \mathbf{f}\left(t_n,\mathbf{z}\_n\right),\\
+			\mathbf{k}_{1}^{(n)} = \mathbf{f}\left(t_n,\mathbf{z}_n\right),\\
 			\vdots\\
-			\mathbf{k}\_{i}^{(n)} = \mathbf{f}\left(t_n + c_i \tau, \mathbf{z}\_n + \tau\displaystyle\sum_{j=1}^{i-1} a_{i,j}\mathbf{k}_{j}^{(n)}\right),
+			\mathbf{k}_{i}^{(n)} = \mathbf{f}\left(t_n + c_i \tau, \mathbf{z}_n + \tau\displaystyle\sum_{j=1}^{i-1} a_{i,j}\mathbf{k}_{j}^{(n)}\right),
 \end{cases}
 ```
 $`\tau`$ — time discretization step.
