@@ -19,7 +19,7 @@ Let an initial value problem be specified as follows:
 ```math
 \dot{\mathbf{z}}\left(t\right)=\mathbf{f}\left(t,\mathbf{z}\right),\quad t \in \left[t_0,t_\text{end}\right],\quad \mathbf{z}\left(t_0\right) = \mathbf{z}_0, 
 ```
-where $`\mathbf{z}\left(t\right): \mathbb{R}\mapsto\mathbb{R}^m, \mathbf{f}\left(t,\mathbf{z}\right):\mathbb{R}\times\mathbb{R}^m\mapsto\mathbb{R}^m\.`$
+where $`\mathbf{z}\left(t\right): \mathbb{R}\mapsto\mathbb{R}^m, \mathbf{f}\left(t,\mathbf{z}\right):\mathbb{R}\times\mathbb{R}^m\mapsto\mathbb{R}^m.`$
 	
 The $s$-stage Runge-Kutta method can be expressed as follows:
 ```math
@@ -36,7 +36,7 @@ where for $`i=\overline{2,s}`$
 $`\tau`$ — time discretization step.
 
 Method coefficients are conveniently set in the form of a **Butcher tableau**:
-```math
+$$
 \begin{array}{r|c}
 			\mathbf{c} & \mathbf{A} \\
 			\hline
@@ -51,12 +51,11 @@ Method coefficients are conveniently set in the form of a **Butcher tableau**:
 			\hline
 			& b_1     & b_2     & \cdots  & b_{s-1} & b_s
 		\end{array},
-```
+$$
 where $`\mathbf{c},\mathbf{b} \in \mathbb{R}^s,\quad \mathbf{A} \in \mathbb{R}^{s\times s}.`$
 
 In the program implementation other elements of the matrix $\mathbf{A}$ are given by zeros, for example, the Butcher table for the classical method of order 4 is given in the program as follows:
-
-```math
+$$
 \begin{array}{r|cccc}
 			0          &             &             &           & \\
 			1/2     & 1/2        &             &           & \\
@@ -72,7 +71,7 @@ In the program implementation other elements of the matrix $\mathbf{A}$ are give
 				\hline
 				& 1/6 & 1/3 & 1/3 & 1/6\\
 		\end{array} 
-```
+$$
 In the context of stability analysis of explicit Runge—Kutta methods, the stability region is defined as $\left\\{z\in\mathbb{C}:\left|R\left(z\right)\right|\leq1\right\\}$, where
 ```math
 R\left(z\right) = 1 + z \mathbf{b}^\top \left(\mathbf{I} - z \mathbf{A}\right)^{-1} \mathbf{1} = \frac{\det\left(\mathbf{I} - z\mathbf{A} + z\mathbf{1}\mathbf{b}^\top\right)}{\det\left(\mathbf{I} - z\mathbf{A}\right)}
