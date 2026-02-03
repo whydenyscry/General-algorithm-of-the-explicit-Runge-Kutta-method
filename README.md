@@ -21,7 +21,7 @@ The solver includes a comprehensive suite of explicit methods, ranging from clas
 * `"RKCV8"`: Cooper-Verner 8th order method (11 stages). 
 
 ### Order 10, 12, 14 (Feagin Series)
-Methods developed by [**Terry Feagin**](https://scholar.google.com/scholar?q=Terry+Feagin+Runge+Kutta).\
+Methods developed by [**Terry Feagin**](https://scholar.google.com/scholar?q=Terry+Feagin+Runge+Kutta).
 > **Note:** The specific coefficients used for these methods were adapted from the [**OrdinaryDiffEq.jl**](https://github.com/SciML/OrdinaryDiffEq.jl) repository (Julia SciML ecosystem), as they provide the most robust optimized values available.
 * `"RKF10"`: Feagin's 10th order method (17 stages).
 * `"RKF12"`: Feagin's 12th order method (25 stages).
@@ -157,6 +157,7 @@ Then the formulas for filling the matrix $`\mathbf{K}^{(n)}`$ can be represented
 The [ExampleOfUse.mlx](ExampleOfUse/ExampleOfUse.pdf) file shows the obtaining of the Tamari attractor
 
 ```math
+\begin{gather}
 \begin{cases}
 			\dot{x} =\left(x-\alpha y\right)\cos z-\beta y \sin z, \\
 			\dot{y} = \left(x+\gamma y\right)\sin z +\delta y\cos z, \\
@@ -185,6 +186,7 @@ The [ExampleOfUse.mlx](ExampleOfUse/ExampleOfUse.pdf) file shows the obtaining o
 		0.05\\
 		0.05
 		\end{bmatrix}
+\end{gather}
 ```
 with initial conditions
 ```math
