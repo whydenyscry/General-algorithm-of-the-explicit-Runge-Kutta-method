@@ -1,7 +1,31 @@
 # General Algorithm of The Explicit Runge—Kutta Method
-This repository contains an algorithm for solving initial value problems (IVPs) using any explicit Runge—Kutta method of any order and for systems of arbitrary dimensionality. 
-Unlike conventional implementations, this approach allows for a more compact and flexible code structure by eliminating the need to manually derive and write out lengthy expressions for each specific IVP. 
-Instead, the user simply provides the Butcher tableau corresponding to the desired Runge—Kutta method, making the implementation both general and efficient.
+A high-precision, fixed-step numerical integrator for Ordinary Differential Equations (ODEs) in MATLAB. 
+This solver implements various explicit Runge-Kutta methods, ranging from classic algorithms to advanced schemes up to order 14.
+
+## Implemented Methods
+The solver includes a comprehensive suite of explicit methods, ranging from classic algorithms to advanced high-order schemes optimized for high-precision scientific simulations.
+
+### Order 3 & 4 (Classics)
+* `"RK3"`: Classic Kutta's 3rd order method.
+* `"RK4"`: The classic Runge-Kutta 4th order method.
+
+### Order 5 (Butcher & Nyström)
+* `"RKB5"`: John Butcher's 5th order method (6 stages).
+* `"RKN5"`: Nyström's 5th order method (6 stages).
+
+### Order 6 & 7 (Butcher Series)
+* `"RKB6"`: John Butcher's 6th order method (7 stages).
+* `"RKB7"`: John Butcher's 7th order method (9 stages).
+
+### Order 8 (Cooper-Verner)
+* `"RKCV8"`: Cooper-Verner 8th order method (11 stages). 
+
+### Order 10, 12, 14 (Feagin Series)
+Methods developed by [**Terry Feagin**](https://scholar.google.com/scholar?q=Terry+Feagin+Runge+Kutta).\
+> **Note:** The specific coefficients used for these methods were adapted from the [**OrdinaryDiffEq.jl**](https://github.com/SciML/OrdinaryDiffEq.jl) repository (Julia SciML ecosystem), as they provide the most robust optimized values available.
+* `"RKF10"`: Feagin's 10th order method (17 stages).
+* `"RKF12"`: Feagin's 12th order method (25 stages).
+* `"RKF14"`: Feagin's 14th order method (35 stages). **The highest order explicit method available in this suite.** Suitable for quadruple precision arithmetic or extremely tight tolerances ($< 10^{-14}$).
 
 ## Table of Contents
 
@@ -134,13 +158,11 @@ The [ExampleOfUse.mlx](ExampleOfUse/ExampleOfUse.pdf) file shows the obtaining o
 
 ```math
 \begin{cases}
-			\dfrac{\mathrm{d}x}{\mathrm{d}t} =\left(x-\alpha y\right)\cos z-\beta y \sin z, \\
-			\dfrac{\mathrm{d}y}{\mathrm{d}t} = \left(x+\gamma y\right)\sin z +\delta y\cos z, \\
-			\dfrac{\mathrm{d}z}{\mathrm{d}t} = \varepsilon +\kappa z+\xi\arctan\left(\dfrac{1-\varsigma}{1-\omega}xy\right),
+			\dot{x} =\left(x-\alpha y\right)\cos z-\beta y \sin z, \\
+			\dot{y} = \left(x+\gamma y\right)\sin z +\delta y\cos z, \\
+			\dot{z} = \varepsilon +\kappa z+\xi\arctan\left(\dfrac{1-\varsigma}{1-\omega}xy\right),
 \end{cases} 
-```
-
-```math
+\\
 \begin{bmatrix}
 			\alpha\\
 			\beta\\
@@ -177,16 +199,14 @@ using the 6th order Runge-Kutta-Butcher method.
 ## Notes
 
 ### Syntax
-`[t, zsol, dzdt_eval] = odeExplicitGeneral(c_vector, A_matrix, b_vector, odefun, tspan, tau, incond)`
+`[t, zsol, dzdt_eval] = odeExplicitSolvers(odefun, tspan, tau, incond, options)`
 
 ### Input Arguments
-- `c_vector`: vector of coefficients $\mathbf{c}$ of Butcher tableau for the selected method;
-- `A_matrix`: matrix of coefficients $\mathbf{A}$ of Butcher tableau for the selected method;
-- `b_vector`: vector of coefficients $\mathbf{b}$ of Butcher tableau for the selected method;
 - `odefun`: function handle defining the right-hand sides of the differential equations $`\dot{\mathbf{z}}\left(t\right)=\mathbf{f}\left(t,\mathbf{z}\right)`$. It must accept arguments (`t`, `z`) and return a column vector of derivatives;
 - `tspan`: interval of integration, specified as a two-element vector;
 - `tau`: time discretization step;
 - `incond`: vector of initial conditions.
+- `options`: `Method` (string, default: `"RK4"`): Specifies the integration algorithm (e.g., `"RKCV8"`, `"RKF14"`)
 
 ### Output Arguments
 - `t`: vector of evaluation points used to perform the integration;
@@ -195,4 +215,8 @@ using the 6th order Runge-Kutta-Butcher method.
 
 ## References
 1. Butcher, J. (2016). Numerical methods for ordinary differential equations. https://doi.org/10.1002/9781119121534
-2. Tamari, B. (1997). Conservation and symmetry laws and stabilization programs in economics. https://www.bentamari.com/PicturesEcometry/Book3-Conservation.pdf
+2. Cooper, G. J., & Verner, J. H. (1972). Some explicit Runge”Kutta methods of high order. SIAM Journal on Numerical Analysis, 9(3), 389–405. https://doi.org/10.1137/0709037
+3. Feagin, T. (2007). A tenth-order Runge-Kutta method with error estimate. Proceedings of the IAENG Conf. on Scientific Computing.
+4. Feagin, T. (2009). An Explicit Runge-Kutta Method of Order Fourteen.
+5. Feagin, T. (2012). High-order explicit Runge-Kutta methods using m-symmetry. Neural, Parallel & Scientific Computations, 20(3-4), 437-458.
+6. Tamari, B. (1997). Conservation and symmetry laws and stabilization programs in economics. https://www.bentamari.com/PicturesEcometry/Book3-Conservation.pdf
